@@ -4,16 +4,18 @@ const buttons = document.querySelectorAll(".btn");
 let firstNumber = 0;
 let operation = "";
 let secondNumber = 0;
-let result = null;
 const operations = ["+", "-", "x", "÷"];
 for (const button of buttons) {
     button.addEventListener("click", () => {
         if (display) {
             if (button.textContent === "C") {
+                firstNumber = 0;
+                operation = "";
+                secondNumber = 0;
                 display.textContent = "0";
             }
             else if (button.textContent === "CE") {
-                display.textContent = "0"; // arreglar mas tarde
+                display.textContent = "0";
             }
             else if (button.textContent === "<-") {
                 display.textContent = display.textContent.slice(0, -1);
