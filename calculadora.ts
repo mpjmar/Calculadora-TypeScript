@@ -37,7 +37,11 @@ for (const button of buttons) {
             display.textContent = String(firstNumber * secondNumber);
             break;
           case "÷":
-            display.textContent = String(firstNumber / secondNumber);
+            if (secondNumber == 0) {
+              display.textContent = "Error";
+            } else {
+              display.textContent = String(firstNumber / secondNumber);
+            }
             break;
           default:
             display.textContent = "Error";
