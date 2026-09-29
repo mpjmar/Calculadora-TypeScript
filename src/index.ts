@@ -2,6 +2,8 @@ class Calculadora {
   firstNumber = 0;
   operation = "";
   secondNumber = 0;
+  hasDecimal = false;
+  sign = "";
 }
 
 class CalculadoraBasica extends Calculadora {
@@ -35,30 +37,11 @@ for (const button of buttons) {
       } else if (calculadora.operations.includes(button.textContent)) {
         calculadora.operation = button.textContent;
         calculadora.firstNumber = Number(display.textContent);
+        calculadora.hasDecimal = false;
         display.textContent = calculadora.operation;
       } else if (button.textContent === "=") {
         calculadora.secondNumber = Number(display.textContent);
-        switch (calculadora.operation) {
-          case "+":
-            display.textContent = String(calculadora.sumar());
-            break;
-          case "-":
-            display.textContent = String(calculadora.restar());
-            break;
-          case "x":
-            display.textContent = String(calculadora.multiplicar());
-            break;
-          case "÷":
-            if (calculadora.secondNumber === 0) {
-              display.textContent = "Error";
-            } else {
-              display.textContent = String(calculadora.dividir());
-            }
-            break;
-          default:
-            display.textContent = "Error";
-            break;
-        }
+        displayResult(calculadora.operation);
       } else if (display.textContent === "0") {
         display.textContent = button.textContent;
       } else if (calculadora.operations.includes(display.textContent)) {
@@ -68,4 +51,28 @@ for (const button of buttons) {
       }
     }
   });
+}
+
+function displayResult(operation: String) {
+  switch (operation) {
+    case "+":
+      display!.textContent = String(calculadora.sumar());
+      break;
+    case "-":
+      display!.textContent = String(calculadora.restar());
+      break;
+    case "x":
+      display!.textContent = String(calculadora.multiplicar());
+      break;
+    case "÷":
+      if (calculadora.secondNumber === 0) {
+        display!.textContent = "Error";
+      } else {
+        display!.textContent = String(calculadora.dividir());
+      }
+      break;
+    default:
+      display!.textContent = "Error";
+      break;
+  }
 }

@@ -3,13 +3,14 @@ class Calculadora {
     firstNumber = 0;
     operation = "";
     secondNumber = 0;
+    hasDecimal = false;
 }
 class CalculadoraBasica extends Calculadora {
     operations = ["+", "-", "x", "÷"];
     sumar = () => this.firstNumber + this.secondNumber;
     restar = () => this.firstNumber - this.secondNumber;
     multiplicar = () => this.firstNumber * this.secondNumber;
-    dividir = () => this.firstNumber + this.secondNumber;
+    dividir = () => this.firstNumber / this.secondNumber;
 }
 const calculadora = new CalculadoraBasica();
 const display = document.querySelector(".display");
@@ -35,32 +36,33 @@ for (const button of buttons) {
             else if (calculadora.operations.includes(button.textContent)) {
                 calculadora.operation = button.textContent;
                 calculadora.firstNumber = Number(display.textContent);
+                calculadora.hasDecimal = false;
                 display.textContent = calculadora.operation;
             }
             else if (button.textContent === "=") {
                 calculadora.secondNumber = Number(display.textContent);
-                switch (calculadora.operation) {
-                    case "+":
-                        display.textContent = String(calculadora.sumar());
-                        break;
-                    case "-":
-                        display.textContent = String(calculadora.restar());
-                        break;
-                    case "x":
-                        display.textContent = String(calculadora.multiplicar());
-                        break;
-                    case "÷":
-                        if (calculadora.secondNumber == 0) {
-                            display.textContent = "Error";
-                        }
-                        else {
-                            display.textContent = String(calculadora.dividir());
-                        }
-                        break;
-                    default:
-                        display.textContent = "Error";
-                        break;
-                }
+                displayResult(calculadora.operation);
+                /* switch (calculadora.operation) {
+                  case "+":
+                    display.textContent = String(calculadora.sumar());
+                    break;
+                  case "-":
+                    display.textContent = String(calculadora.restar());
+                    break;
+                  case "x":
+                    display.textContent = String(calculadora.multiplicar());
+                    break;
+                  case "÷":
+                    if (calculadora.secondNumber === 0) {
+                      display.textContent = "Error";
+                    } else {
+                      display.textContent = String(calculadora.dividir());
+                    }
+                    break;
+                  default:
+                    display.textContent = "Error";
+                    break;
+                } */
             }
             else if (display.textContent === "0") {
                 display.textContent = button.textContent;
@@ -73,4 +75,28 @@ for (const button of buttons) {
             }
         }
     });
+}
+function displayResult(operation) {
+    switch (operation) {
+        case "+":
+            display.textContent = String(calculadora.sumar());
+            break;
+        case "-":
+            display.textContent = String(calculadora.restar());
+            break;
+        case "x":
+            display.textContent = String(calculadora.multiplicar());
+            break;
+        case "÷":
+            if (calculadora.secondNumber === 0) {
+                display.textContent = "Error";
+            }
+            else {
+                display.textContent = String(calculadora.dividir());
+            }
+            break;
+        default:
+            display.textContent = "Error";
+            break;
+    }
 }
