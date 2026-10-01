@@ -17,7 +17,7 @@ h1 {
   padding: 25px;
 }
 
-.container {
+.calculator {
   border: 1px solid rgb(42, 71, 72);
   border-radius: 10px;
   width: 300px;
@@ -68,7 +68,7 @@ h1 {
 
   .operation {
     background-color: rgb(125, 88, 125);
-    color: rgb(247, 208, 215);
+    color: rgb(246, 222, 227);
   }
 
   .operation:hover {
