@@ -1,6 +1,12 @@
 import { Calculator } from "./calculator";
 import { BasicCalculator } from "./calculator";
 
-const calculator1 = new BasicCalculator();
-const calculator2 = new BasicCalculator();
-const calculator3 = new BasicCalculator();
+const container = document.querySelector(".calculators");
+let counter = 0;
+
+function create(): void {
+  const id = `calc-${counter++}`;
+
+  const divCal = document.createElement("div");
+  divCal.innerHTML = `<h2>Calculadora ${counter}</h2>`;
+}
