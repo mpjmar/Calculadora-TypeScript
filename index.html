@@ -4,18 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculators</title>
+    <link rel="stylesheet" href="src/styles.css" />
   </head>
+
   <body>
     <header>
-      <h1>Calculator</h1>
+      <h1>Calculators, watch and timer</h1>
     </header>
 
-    <main id="calculators"></main>
+    <main>
+      <div class="timer"></div>
+      <div class="watch"></div>
+      <div class="calculators">
+        <h1>Calculators</h1>
+        <button class="addNew">Add new calculator</button>
+        <div class="calcs-container"></div>
+      </div>
+    </main>
 
     <footer>
-      <p>Servidores y API's - Calculator en TypeScript</p>
+      <p>Servidores y API's - Calculator with TypeScript</p>
     </footer>
 
-    <script src="../dist/main.js"></script>
+    <script type="module" src="/src.index.ts"></script>
   </body>
 </html>
