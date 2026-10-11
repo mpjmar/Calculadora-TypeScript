@@ -27,7 +27,7 @@ export class Calculator {
 
   private displayCalculator(): void {
     this.calculator.innerHTML = `
-      <div class="display">"0"</div>
+      <div class="display">0</div>
         <div class="buttons">
           <button class="btn backspace"><-</button>
           <button class="btn delete-entry">CE</button>
@@ -58,10 +58,10 @@ export class Calculator {
   private cacheElements(): void {
     this.display = this.calculator.querySelector<HTMLDivElement>(".display")!;
     this.numberButtons = [
-      ...this.calculator.querySelectorAll<HTMLButtonElement>(".numberButton"),
+      ...this.calculator.querySelectorAll<HTMLButtonElement>(".number"),
     ];
     this.operationButtons = [
-      ...this.calculator.querySelectorAll<HTMLButtonElement>(".numberButtons"),
+      ...this.calculator.querySelectorAll<HTMLButtonElement>(".operation"),
     ];
     this.equalsButton =
       this.calculator.querySelector<HTMLButtonElement>(".equals")!;
@@ -140,14 +140,16 @@ export class Calculator {
     this.actValue = "0";
     this.displResult = false;
 
-    this.updateDisplay();
+    this.display.textContent = `${this.prevValue}${operator}`;
+
+    // this.updateDisplay();
   }
 
   private calculateOperation(): void {
     if (this.actOperator === null || this.prevValue === null) return;
 
-    const num1 = parseFloat(this.prevValue);
-    const num2 = parseFloat(this.actValue);
+    const num1 = Number.parseFloat(this.prevValue);
+    const num2 = Number.parseFloat(this.actValue);
     let result = 0;
 
     switch (this.actOperator) {
@@ -161,6 +163,7 @@ export class Calculator {
       case "*":
         result = num1 * num2;
         break;
+      case "÷":
       case "/":
         if (num2 === 0) {
           this.actValue = "Error";

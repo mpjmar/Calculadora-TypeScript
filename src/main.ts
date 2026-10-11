@@ -1,6 +1,6 @@
 import { Calculator } from "./calculator.js";
 
-const calContainer = document.querySelector(".calculators")!;
+const calContainer = document.querySelector(".calcs-container")!;
 let cont = 0;
 
 function createCalculator(): void {
@@ -18,6 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   createCalculator();
 
   document
-    .querySelector("#add-calc")
+    .querySelector(".addNew")
     ?.addEventListener("click", createCalculator);
 });
