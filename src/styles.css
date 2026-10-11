@@ -20,27 +20,58 @@ h1 {
   text-align: center;
   padding: 25px;
   background-color: rgb(201, 241, 242);
-  margin-bottom: 25px;
   width: 100%;
 }
 
-main {
+.timers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  margin: 50px auto 50px;
+
   h1 {
     border: 1px solid cadetblue;
+    border-radius: 15px 15px 0 0;
   }
+}
+
+.watch, .timer{
+  text-align: center;
+  border: 1px solid cadetblue;
+  border-radius: 15px;
+  width: 250px;
+
+  .time {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 15px;
+  }
+}
+
+.calculators > h1 {
+  border: 1px solid cadetblue;
 }
 
 .addNew {
   display: block;
-  margin: 20px auto;
+  margin: 50px auto;
   font-size: 15px;
   font-weight: bold;
   border: none;
   border-radius: 5px;
   padding: 25px;
-  background-color: cadetblue;
-  color: rgb(3, 5, 5);
-  box-shadow: 3px 3px 15px 0;
+  background-color: rgb(125, 88, 125);
+  color: white;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.addNew:hover {
+  background-color: rgb(247, 208, 215);
+  color: rgb(125, 88, 125);
 }
 
 .calcs-container {
@@ -50,8 +81,8 @@ main {
 }
 
 h2 {
-  padding: 20px;
   text-align: center;
+  margin: 25px;
 }
 
 .calculator {
@@ -63,7 +94,7 @@ h2 {
   justify-content: center;
   background-color: cadetblue;
   box-shadow: 3px 3px 15px 0;
-  margin: 50px;
+  margin: 30px;
 }
 
 .display {
