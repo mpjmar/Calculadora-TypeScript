@@ -3,9 +3,14 @@ import { Watch } from "./watch.js";
 import { Timer } from "./timer.js";
 
 const watchContainer = document.querySelector(".watch-container")!;
-const timerContainer = document.querySelector(".timer-container")!;
 const calContainer = document.querySelector(".calcs-container")!;
 let cont = 0;
+
+const time = document.querySelector(".time")!;
+const start = document.querySelector(".start")!;
+const pause = document.querySelector(".pause")!;
+const reset = document.querySelector(".reset")!;
+const timer = document.querySelector(".timer")!;
 
 function createWatch(): void {
   const watch = new Watch();
@@ -18,9 +23,39 @@ function createWatch(): void {
     const min = date.getMinutes().toString().padStart(2, "0");
     const sec = date.getSeconds().toString().padStart(2, "0");
 
-    time.innerText = `${hours}:${min}:${sec}`;
+    time.textContent = `${hours}:${min}:${sec}`;
   });
   watchContainer.appendChild(time);
+}
+
+function createTimer(): void {
+  const chrono = new Timer();
+  time.textContent = "00:00:00";
+
+  start.addEventListener("click", () => {
+    chrono.startCounter();
+  });
+  pause.addEventListener("click", () => {
+    chrono.pauseCounter();
+  });
+  reset.addEventListener("click", () => {
+    chrono.resetCounter();
+  });
+  timer.addEventListener("click", () => {
+    chrono.toggleCountdown();
+  });
+
+  chrono.timer$.subscribe((value) => {
+    const minutes = Math.floor(value / 60000);
+    const seconds = Math.floor(value / 1000) % 60;
+    const decimal = Math.floor(value / 10) % 100;
+
+    const min = minutes.toString().padStart(2, "0");
+    const sec = seconds.toString().padStart(2, "0");
+    const dec = decimal.toString().padStart(2, "0");
+
+    time.textContent = `${min}:${sec}:${dec}`;
+  });
 }
 
 function createCalculator(): void {
@@ -36,7 +71,7 @@ function createCalculator(): void {
 
 document.addEventListener("DOMContentLoaded", () => {
   createWatch();
-  // createTimer();
+  createTimer();
   createCalculator();
 
   document

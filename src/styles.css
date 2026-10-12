@@ -37,7 +37,7 @@ h1 {
   }
 }
 
-.watch, .timer{
+.watch, .chrono {
   text-align: center;
   border: 1px solid cadetblue;
   border-radius: 15px;
@@ -48,6 +48,25 @@ h1 {
     font-weight: bold;
     padding: 15px;
   }
+}
+
+.chrono {
+  width: 300px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.start, .pause, .reset, .timer {
+  width: 50px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid cadetblue;
+  cursor: pointer;
+  padding: 5px;
 }
 
 .calculators > h1 {
